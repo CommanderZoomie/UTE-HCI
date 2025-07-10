@@ -1,0 +1,290 @@
+/* General Body Styles (Default: Dark Mode) */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a; /* Dark background */
+    color: #f0f0f0; /* Light text */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+}
+
+/* Container for main content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: #282828; /* Darker background for header */
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.logo {
+    display: flex; /* Use flexbox for logo elements */
+    align-items: center;
+    gap: 10px; /* Space between logo items */
+}
+
+.logo img {
+    height: 40px; /* Adjust logo image size */
+    width: auto;
+    vertical-align: middle;
+}
+
+.logo h1 {
+    color: #4CAF50; /* Green color for app name */
+    margin: 0; /* Remove default h1 margin for flexbox */
+    font-size: 1.8em; /* Adjust font size as needed */
+}
+
+/* Navigation Styles */
+nav a {
+    color: #f0f0f0;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #4CAF50;
+}
+
+/* Theme Toggle Button */
+#toggle-theme {
+    background: none;
+    border: none;
+    font-size: 1.5em; /* Adjust icon size */
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /* No specific color here as it's an emoji, but background can change */
+}
+
+#toggle-theme:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+/* Main content area padding */
+main.container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* Dashboard Section Styles */
+.dashboard-section h1 {
+    text-align: center;
+    color: #4CAF50;
+    margin-bottom: 30px;
+    transition: color 0.3s ease;
+}
+
+.dashboard-section p {
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    color: #f0f0f0; /* Default text color */
+    transition: color 0.3s ease;
+}
+
+.dashboard-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background-color: #2c2c2c; /* Dark mode action background */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.action-item {
+    text-align: center;
+    flex: 1 1 200px; /* Allows items to wrap */
+    max-width: 250px;
+}
+
+.action-item img {
+    width: 60px; /* Set desired icon size */
+    height: 60px; /* Set desired icon size */
+    object-fit: contain; /* Prevents image deformation */
+    margin-bottom: 10px;
+    /* Remove the filter here to show original icon colors by default */
+    filter: none; /* Ensure no filter is applied by default */
+    transition: filter 0.3s ease; /* Smooth transition for filter changes */
+}
+
+.action-item p {
+    margin: 0;
+    font-size: 0.95em;
+    color: #bbb; /* Dark mode text color for action items */
+    transition: color 0.3s ease;
+}
+
+.section-summaries {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.summary-box {
+    background-color: #2c2c2c; /* Dark mode summary box background */
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    flex: 1 1 300px; /* Allows boxes to grow and wrap */
+    max-width: 350px;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.summary-box h3 {
+    color: #4CAF50; /* Green heading color */
+    margin-top: 0;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.summary-box p {
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #ccc; /* Dark mode text color for summary boxes */
+    text-align: left;
+    min-height: 80px; /* Ensures consistent height if descriptions vary */
+    transition: color 0.3s ease;
+}
+
+.summary-box .btn {
+    margin-top: 20px;
+    /* Assuming btn-success is defined elsewhere, but ensure it looks good in both modes */
+}
+
+.text-center {
+    text-align: center;
+}
+
+small {
+    color: #aaa;
+    transition: color 0.3s ease;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Light Mode Styles - Applied when body has 'light-mode' class */
+/* -------------------------------------------------------------------------- */
+
+body.light-mode {
+    background-color: #f0f2f5; /* Lighter background */
+    color: #333; /* Darker text */
+}
+
+body.light-mode header {
+    background-color: #ffffff; /* Lighter header background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .logo h1 {
+    color: #2196F3; /* Blue color for app name in light mode */
+}
+
+body.light-mode nav a {
+    color: #555; /* Darker link color */
+}
+
+body.light-mode nav a:hover {
+    color: #2196F3; /* Blue hover color */
+}
+
+body.light-mode #toggle-theme:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .dashboard-section h1 {
+    color: #2196F3; /* Blue heading in light mode */
+}
+
+body.light-mode .dashboard-section p {
+    color: #444; /* Darker paragraph text */
+}
+
+body.light-mode .dashboard-actions {
+    background-color: #ffffff; /* Lighter action background */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+body.light-mode .action-item p {
+    color: #666; /* Darker text for action items */
+}
+
+body.light-mode .action-item img {
+    /* If your icons are originally dark and you want them to be lighter/inverted in light mode,
+       you might apply a filter here. If they are already suitable for light backgrounds,
+       then 'filter: none;' is fine. For example, if they are black icons, you might use: */
+    /* filter: brightness(0.5); */ /* Example: make dark icons a bit lighter if needed */
+    /* Or if they are white icons and you want them dark: */
+    /* filter: invert(1); */
+    /* For now, assuming they are suitable for light backgrounds without filter */
+    filter: none;
+}
+
+
+body.light-mode .section-summaries {
+    /* No specific background change needed here, boxes handle their own */
+}
+
+body.light-mode .summary-box {
+    background-color: #ffffff; /* Lighter summary box background */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+body.light-mode .summary-box h3 {
+    color: #2196F3; /* Blue heading in light mode */
+}
+
+body.light-mode .summary-box p {
+    color: #555; /* Darker text for summary boxes */
+}
+
+body.light-mode small {
+    color: #777; /* Darker small text */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    nav a {
+        margin: 5px 0;
+    }
+
+    #toggle-theme {
+        margin-left: 0 !important; /* Override inline style if any */
+        margin-top: 10px;
+    }
+}
