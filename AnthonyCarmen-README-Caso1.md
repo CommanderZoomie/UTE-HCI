@@ -9,7 +9,8 @@ Caso Práctico 1 (actualizado) – 9 julio de 2025
 (Funcionando) Pagina Web Version 3: https://edueventos.great-site.net/
 
 En la página de Login: (La contraseña está en forma hash para verificar con el db.)
-Usuario: Anthony
+
+Usuario: Anthony ; 
 Contraseña: 2025
 
 PHP y SQL hosting: https://dash.infinityfree.com/
