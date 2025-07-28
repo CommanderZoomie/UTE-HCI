@@ -1,0 +1,1162 @@
+/* css/style.css */
+
+/* Global Reset & Box Sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* --- CSS Variables for Color Themes --- */
+:root {
+    /* Dark Mode Colors */
+    --color-bg-dark: #1a1a1a;
+    --color-bg-header-dark: #282828;
+    --color-bg-action-dark: #2c2c2c; /* Background for action sections/cards, modals, table rows */
+    --color-text-dark: #f0f0f0;
+    --color-text-muted-dark: #d0d0d0;
+    --color-text-muted-dark-rgb: 208, 208, 208; /* Added RGB for rgba() usage */
+    --color-primary-dark: #81C784; /* A vibrant green for dark mode */
+    --color-primary-dark-rgb: 129, 199, 132;
+    --color-shadow-dark: rgba(0, 0, 0, 0.2);
+
+    /* Light Mode Colors */
+    --color-bg-light: #f0f2f5;
+    --color-bg-header-light: #ffffff;
+    --color-bg-action-light: #ffffff; /* Background for action sections/cards, modals, table rows */
+    --color-text-light: #333;
+    --color-text-muted-light: #444;
+    --color-text-muted-light-rgb: 68, 68, 68; /* Added RGB for rgba() usage */
+    --color-primary-light: #0D47A1;
+    --color-primary-light-rgb: 13, 71, 161;
+    --color-shadow-light: rgba(0, 0, 0, 0.1);
+
+    /* Misc */
+    --transition-speed: 0.3s;
+}
+
+/* --- General Body Styles (Default: Dark Mode) --- */
+html, body { /* Apply min-height to html and body to ensure full viewport height */
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body {
+    font-family: Arial, sans-serif !important;
+    display: flex !important; /* Make body a flex container */
+    flex-direction: column !important; /* Stack header, main, footer vertically */
+    background-color: var(--color-bg-dark) !important;
+    color: var(--color-text-dark) !important;
+    line-height: 1.6 !important;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease !important;
+}
+
+/* New: Main content wrapper to take up available space */
+.content-wrapper { /* This corresponds to the <main> tag */
+    flex-grow: 1 !important; /* Allows the main content area to expand and push footer down */
+    display: flex !important; /* Make main a flex container */
+    flex-direction: column !important; /* Stack sections inside main vertically */
+    /* Padding is now handled by .container inside sections */
+}
+
+/* Container for general content centering within sections */
+.container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+}
+
+
+/* --- Header Styles --- */
+header {
+    background-color: var(--color-bg-header-dark) !important;
+    padding: 15px 0 !important;
+    box-shadow: 0 2px 5px var(--color-shadow-dark) !important;
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease !important;
+    flex-shrink: 0 !important;
+}
+
+.header-content {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    padding: 0 20px !important;
+}
+
+.logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.logo img {
+    height: 40px !important;
+    width: auto !important;
+    vertical-align: middle !important;
+}
+
+.logo h1 {
+    color: var(--color-primary-dark) !important;
+    margin: 0 !important;
+    font-size: 1.125rem !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+/* --- Footer Styles --- */
+footer {
+    background-color: var(--color-bg-header-dark) !important;
+    color: var(--color-text-dark) !important;
+    padding: 20px 0 !important;
+    margin-top: auto !important;
+    box-shadow: 0 -2px 5px var(--color-shadow-dark) !important;
+    text-align: center !important;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, box-shadow var(--transition-speed) ease !important;
+    flex-shrink: 0 !important;
+}
+
+.footer-content {
+    padding: 20px !important;
+}
+
+.footer-logo {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-bottom: 15px !important;
+}
+
+.footer-logo h1 {
+    font-size: 1.5em !important;
+    margin-bottom: 10px !important;
+    color: var(--color-primary-dark) !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.footer-images {
+    display: flex !important;
+    gap: 15px !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.footer-icon {
+    width: 40px !important;
+    height: auto !important;
+    max-width: 100% !important;
+    display: block !important;
+}
+
+footer p {
+    margin: 5px 0 !important;
+    font-size: 0.9em !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+/* --- Navigation Styles --- */
+nav a {
+    color: var(--color-text-dark) !important;
+    text-decoration: none !important;
+    margin-left: 20px !important;
+    font-weight: bold !important;
+    transition: color var(--transition-speed) ease !important;
+    white-space: nowrap !important;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: var(--color-primary-dark) !important;
+    outline: none !important;
+}
+
+nav a:focus-visible {
+    outline: 2px solid var(--color-primary-dark) !important;
+    outline-offset: 2px !important;
+}
+
+
+/* --- Button Styles --- */
+.btn {
+    display: inline-block !important;
+    padding: 10px 20px !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, box-shadow var(--transition-speed) ease !important;
+    box-shadow: 0 2px 5px var(--color-shadow-dark) !important;
+}
+
+.btn:hover {
+    filter: brightness(1.1) !important;
+    box-shadow: 0 4px 10px var(--color-shadow-dark) !important;
+}
+
+.btn:active {
+    transform: translateY(1px) !important;
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: var(--color-primary-dark) !important;
+    color: var(--color-text-dark) !important;
+}
+
+/* Success Button (often green) - FIXED CONTRAST */
+.btn-success {
+    background-color: #2e7d32 !important; /* Darker green for better contrast (original was #4CAF50) */
+    color: #fff !important;
+}
+
+/* Cancel Button (often grey or red) */
+.btn-cancel {
+    background-color: #6c757d !important;
+    color: #fff !important;
+}
+
+/* Danger Button (for delete actions) */
+.btn-danger {
+    background-color: #dc3545 !important; /* Red */
+    color: #fff !important;
+}
+
+/* Small Info Button for View Events */
+.btn-sm {
+    padding: 5px 10px !important;
+    font-size: 0.85rem !important;
+}
+
+.btn-info {
+    background-color: #17a2b8 !important;
+    color: #fff !important;
+}
+
+
+/* --- Light Mode Button Styles --- */
+body.light-mode .btn {
+    box-shadow: 0 2px 5px var(--color-shadow-light) !important;
+}
+
+body.light-mode .btn:hover {
+    box-shadow: 0 4px 10px var(--color-shadow-light) !important;
+}
+
+body.light-mode .btn-primary {
+    background-color: var(--color-primary-light) !important;
+    color: #fff !important;
+}
+
+/* Light Mode Success Button - FIXED CONTRAST */
+body.light-mode .btn-success {
+    background-color: #1b5e20 !important; /* Even darker green for light mode (original was #28a745) */
+    color: #fff !important;
+}
+
+body.light-mode .btn-cancel {
+    background-color: #adb5bd !important;
+    color: #333 !important;
+}
+
+body.light-mode .btn-info {
+    background-color: #1a899a !important;
+    color: #fff !important;
+}
+
+
+/* --- Theme Toggle Button --- */
+#toggle-theme {
+    background: none !important;
+    border: none !important;
+    font-size: 1.5rem !important;
+    cursor: pointer !important;
+    padding: 5px !important;
+    border-radius: 5px !important;
+    transition: background-color var(--transition-speed) ease, transform 0.2s ease, color var(--transition-speed) ease !important;
+    color: inherit !important;
+    margin-left: 20px !important;
+}
+
+#toggle-theme:hover,
+#toggle-theme:focus-visible {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.1) !important;
+    outline: none !important;
+}
+
+#toggle-theme:focus-visible {
+    outline: 2px solid var(--color-primary-dark) !important;
+    outline-offset: 2px !important;
+}
+
+/* --- Dashboard Section Styles --- */
+.dashboard-section {
+    padding: 40px 20px !important; /* Consistent padding for content sections */
+    background-color: var(--color-bg-dark) !important; /* Default background */
+    color: var(--color-text-dark) !important;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease !important;
+}
+
+.dashboard-section h1 {
+    text-align: center !important;
+    color: var(--color-primary-dark) !important;
+    margin-bottom: 30px !important;
+    font-size: 2.2rem !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.dashboard-section p {
+    text-align: center !important;
+    font-size: 1.0rem !important;
+    margin-bottom: 25px !important;
+    color: var(--color-text-dark) !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.dashboard-actions {
+    display: flex !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 30px !important;
+    margin-bottom: 50px !important;
+    padding: 20px !important;
+    background-color: var(--color-bg-action-dark) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 10px var(--color-shadow-dark) !important;
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease !important;
+}
+
+.action-item {
+    text-align: center !important;
+    flex: 1 1 200px !important;
+    max-width: 250px !important;
+}
+
+.action-item img {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: contain !important; /* Ensures image content is fully visible */
+    margin-bottom: 10px !important;
+    filter: none !important; /* Reset any potential filter */
+    transition: filter var(--transition-speed) ease !important;
+}
+
+.action-item p {
+    margin: 0 !important;
+    font-size: 0.9375rem !important; /* 15px */
+    color: var(--color-text-muted-dark) !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.section-summaries {
+    display: flex !important;
+    justify-content: space-around !important;
+    flex-wrap: wrap !important;
+    gap: 30px !important;
+}
+
+.summary-box {
+    background-color: var(--color-bg-action-dark) !important;
+    padding: 25px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 10px var(--color-shadow-dark) !important;
+    flex: 1 1 300px !important;
+    max-width: 350px !important;
+    text-align: center !important;
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease !important;
+}
+
+.summary-box h3 {
+    color: var(--color-primary-dark) !important;
+    margin-top: 0 !important;
+    margin-bottom: 15px !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.summary-box p {
+    font-size: 0.875rem !important; /* 14px */
+    line-height: 1.5 !important;
+    color: var(--color-text-muted-dark) !important;
+    text-align: left !important;
+    min-height: 80px !important; /* Ensures consistent height, adjust if content varies greatly */
+    transition: color var(--transition-speed) ease !important;
+}
+
+.summary-box .btn {
+    margin-top: 20px !important;
+}
+
+/* --- Utility Classes --- */
+.text-center {
+    text-align: center !important;
+}
+
+small {
+    color: var(--color-text-muted-dark) !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+/* --- Inicio Page Specific Styles (for main image) --- */
+.main-hero-image {
+    width: 300px !important;
+    height: auto !important;
+    max-width: 100% !important;
+    display: block !important;
+    margin: 20px auto !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 10px var(--color-shadow-dark) !important;
+    transition: box-shadow var(--transition-speed) ease !important;
+}
+
+/* --- Inicio Page Section Layout --- */
+.hero-section {
+    padding: 60px 20px !important;
+    background-color: var(--color-bg-dark) !important;
+    color: var(--color-text-dark) !important;
+    text-align: center !important; /* Default for mobile/single column */
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease !important;
+}
+
+.hero-content {
+    display: flex !important;
+    flex-direction: column !important; /* Default to column for mobile */
+    align-items: center !important; /* Center items when in column */
+    gap: 40px !important;
+    max-width: 900px !important; /* Constrain content width */
+    margin: 0 auto !important; /* Center the content container */
+}
+
+.hero-text h2 {
+    font-size: 2.5rem !important;
+    color: var(--color-primary-dark) !important;
+    margin-bottom: 15px !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.hero-text p {
+    font-size: 1.1rem !important;
+    line-height: 1.8 !important;
+    margin-bottom: 30px !important;
+    color: var(--color-text-muted-dark) !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.hero-image-wrapper { /* Container for the main hero image */
+    flex-shrink: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.about-section {
+    padding: 60px 20px !important;
+    background-color: var(--color-bg-action-dark) !important;
+    color: var(--color-text-dark) !important;
+    text-align: center !important;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease !important;
+    box-shadow: 0 2px 10px var(--color-shadow-dark) !important;
+    margin-top: 40px !important;
+    border-radius: 8px !important;
+}
+
+.about-content {
+    max-width: 800px !important;
+    margin: 0 auto !important;
+}
+
+.about-text h3 {
+    font-size: 2rem !important;
+    color: var(--color-primary-dark) !important;
+    margin-bottom: 10px !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.about-text h4 {
+    font-size: 1.2rem !important;
+    color: var(--color-text-muted-dark) !important;
+    margin-bottom: 20px !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.about-text p {
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+    margin-bottom: 30px !important;
+    color: var(--color-text-dark) !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.public-events {
+    padding: 40px 20px !important;
+    background-color: var(--color-bg-dark) !important;
+    color: var(--color-text-dark) !important;
+    margin-top: 40px !important;
+    text-align: center !important;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease !important;
+}
+
+.public-events h3 {
+    font-size: 1.8rem !important;
+    color: var(--color-primary-dark) !important;
+    margin-bottom: 25px !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.public-events ul {
+    list-style: none !important;
+    padding: 0 !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+}
+
+.public-events li {
+    background-color: var(--color-bg-action-dark) !important;
+    margin-bottom: 15px !important;
+    padding: 15px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 5px var(--color-shadow-dark) !important;
+    text-align: left !important;
+    color: var(--color-text-muted-dark) !important;
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease, color var(--transition-speed) ease !important;
+}
+
+.public-events li strong {
+    color: var(--color-primary-dark) !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+
+/* --- Login Page Styles --- */
+.login-section {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-grow: 1 !important; /* Allow login section to take available space within main */
+    padding: 20px !important;
+    background-color: var(--color-bg-dark) !important;
+    transition: background-color var(--transition-speed) ease !important;
+}
+
+.login-box {
+    background-color: var(--color-bg-action-dark) !important;
+    padding: 40px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 15px var(--color-shadow-dark) !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    text-align: center !important;
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease !important;
+}
+
+.login-box h2 {
+    color: var(--color-primary-dark) !important;
+    margin-bottom: 30px !important;
+    font-size: 2rem !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.form-group {
+    margin-bottom: 20px !important;
+    text-align: left !important;
+}
+
+.form-group label {
+    display: block !important;
+    margin-bottom: 8px !important;
+    color: var(--color-text-dark) !important;
+    font-weight: bold !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"] {
+    width: 100% !important;
+    padding: 12px !important;
+    border: 1px solid var(--color-text-muted-dark) !important;
+    border-radius: 5px !important;
+    background-color: var(--color-bg-dark) !important;
+    color: var(--color-text-dark) !important;
+    font-size: 1rem !important;
+    transition: border-color var(--transition-speed) ease, background-color var(--transition-speed) ease, color var(--transition-speed) ease !important;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="email"]:focus {
+    border-color: var(--color-primary-dark) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(129, 199, 132, 0.5) !important;
+}
+
+/* Alert Message Styles */
+.alert {
+    padding: 15px !important;
+    margin-bottom: 20px !important;
+    border-radius: 5px !important;
+    text-align: left !important;
+    font-size: 0.95rem !important;
+}
+
+.alert-danger {
+    background-color: #dc3545 !important;
+    color: #fff !important;
+    border: 1px solid #dc3545 !important;
+}
+
+/* Link and Small text inside login box */
+.login-box a {
+    color: var(--color-primary-dark) !important;
+    text-decoration: none !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.login-box a:hover {
+    text-decoration: underline !important;
+}
+
+.login-box small {
+    color: var(--color-text-muted-dark) !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+/* --- Management Section Styles (for tables, modals, etc.) --- */
+.management-section {
+    padding: 40px 20px !important; /* Consistent padding for content sections */
+    background-color: var(--color-bg-dark) !important;
+    color: var(--color-text-dark) !important;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease !important;
+}
+
+.management-section h1 {
+    text-align: center !important;
+    color: var(--color-primary-dark) !important;
+    margin-bottom: 30px !important;
+    font-size: 2.2rem !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.table-responsive {
+    overflow-x: auto !important; /* Allows horizontal scrolling for large tables */
+    margin-top: 20px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 10px var(--color-shadow-dark) !important;
+    transition: box-shadow var(--transition-speed) ease !important;
+}
+
+.data-table {
+    width: 100% !important;
+    border-collapse: collapse !important; /* Removes space between table cells */
+    min-width: 700px !important; /* Ensure table is wide enough for content */
+    border: 1px solid var(--color-text-muted-dark) !important; /* Added full border to table */
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px 15px !important;
+    text-align: left !important;
+    border-bottom: 1px solid var(--color-text-muted-dark) !important;
+    color: var(--color-text-dark) !important;
+    transition: border-color var(--transition-speed) ease, color var(--transition-speed) ease !important;
+}
+
+.data-table th {
+    background-color: var(--color-bg-header-dark) !important;
+    color: var(--color-primary-dark) !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    font-size: 0.9em !important;
+    border-bottom: 2px solid var(--color-primary-dark) !important; /* More prominent border below header */
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease !important;
+}
+
+.data-table tbody tr {
+    background-color: var(--color-bg-action-dark) !important; /* Slightly different background for rows */
+    transition: background-color var(--transition-speed) ease !important;
+}
+
+.data-table tbody tr:hover {
+    background-color: rgba(var(--color-primary-dark-rgb), 0.1) !important; /* Subtle hover effect */
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: var(--color-bg-dark) !important; /* Alternate row color */
+}
+
+.action-icons {
+    white-space: nowrap !important; /* Keep icons on one line */
+    display: flex !important; /* Use flex to align icons */
+    gap: 5px !important; /* Space between icons */
+    align-items: center !important; /* Vertically center icons */
+}
+
+/* Styles for images that are standalone action icons (not inside buttons) */
+.action-icon {
+    width: 30px !important;
+    height: 30px !important;
+    cursor: pointer !important;
+    vertical-align: middle !important;
+    transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease !important; /* Added transitions */
+    padding: 5px !important; /* Add some padding to make them easier to click */
+    border-radius: 5px !important; /* Rounded corners */
+    background-color: transparent !important; /* No background by default */
+    border: 1px solid transparent !important; /* Transparent border */
+}
+
+.action-icon:hover {
+    transform: scale(1.1) !important;
+    background-color: rgba(var(--color-text-muted-dark-rgb), 0.1) !important; /* Subtle background on hover */
+    border-color: var(--color-text-muted-dark) !important; /* Subtle border on hover */
+}
+
+/* Styles for images *inside* buttons (like the delete button) */
+.action-icons button img { /* Target img inside a button within action-icons */
+    width: 30px !important;
+    height: 30px !important;
+    margin: 0 !important; /* Reset margin if button has padding */
+    vertical-align: middle !important;
+    pointer-events: none !important; /* Allow button click to register, not image */
+}
+
+
+/* --- Modal Styles (for Add/Edit/View forms) --- */
+.modal {
+    display: none !important; /* Hidden by default - THIS IS THE CRUCIAL FIX */
+    position: fixed !important; /* Stay in place */
+    z-index: 1000 !important; /* Sit on top */
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important; /* Full width */
+    height: 100% !important; /* Full height */
+    overflow: auto !important; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.7) !important; /* Black w/ opacity */
+    align-items: center !important; /* Center vertically when flex is applied by JS */
+    justify-content: center !important; /* Center horizontally when flex is applied by JS */
+}
+
+.modal-content {
+    background-color: var(--color-bg-action-dark) !important;
+    margin: auto !important; /* Centered horizontally */
+    padding: 30px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
+    max-width: 600px !important; /* Max width for modal content */
+    width: 90% !important; /* Responsive width */
+    position: relative !important;
+    animation: fadeIn 0.3s ease-out !important; /* Simple fade in animation */
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease !important;
+}
+
+.modal-content h2 {
+    color: var(--color-primary-dark) !important;
+    margin-top: 0 !important;
+    margin-bottom: 25px !important;
+    text-align: center !important;
+    font-size: 2rem !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.close-button {
+    color: var(--color-text-muted-dark) !important;
+    font-size: 2.5rem !important;
+    font-weight: bold !important;
+    position: absolute !important;
+    top: 10px !important;
+    right: 20px !important;
+    cursor: pointer !important;
+    transition: color 0.2s ease !important;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--color-primary-dark) !important;
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+.modal-details p {
+    margin-bottom: 10px !important;
+    font-size: 1.05rem !important;
+    color: var(--color-text-dark) !important;
+    text-align: left !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.modal-details p strong {
+    color: var(--color-primary-dark) !important;
+    margin-right: 5px !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.button-group {
+    display: flex !important;
+    justify-content: flex-end !important; /* Align buttons to the right */
+    gap: 15px !important;
+    margin-top: 30px !important;
+}
+
+/* Styles for the confirmation modal's buttons (e.g., Delete/Cancel) */
+.button-group.confirm-buttons {
+    justify-content: center !important; /* Center buttons in confirmation modal */
+}
+
+/* Form Group styles for modals and other forms */
+.form-group {
+    margin-bottom: 15px !important;
+}
+
+.form-group label {
+    display: block !important;
+    margin-bottom: 5px !important;
+    font-weight: bold !important;
+    color: var(--color-text-dark) !important;
+    transition: color var(--transition-speed) ease !important;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="url"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+    width: 100% !important;
+    padding: 10px !important;
+    border: 1px solid var(--color-text-muted-dark) !important;
+    border-radius: 5px !important;
+    background-color: var(--color-bg-dark) !important;
+    color: var(--color-text-dark) !important;
+    font-size: 1rem !important;
+    transition: border-color var(--transition-speed) ease, background-color var(--transition-speed) ease, color var(--transition-speed) ease !important;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--color-primary-dark) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(129, 199, 132, 0.5) !important;
+}
+
+/* --- Light Mode Styles - Applied when body has 'light-mode' class --- */
+body.light-mode {
+    background-color: var(--color-bg-light) !important;
+    color: var(--color-text-light) !important;
+}
+
+body.light-mode header {
+    background-color: var(--color-bg-header-light) !important;
+    box-shadow: 0 2px 5px var(--color-shadow-light) !important;
+}
+
+body.light-mode .logo h1 {
+    color: var(--color-primary-light) !important;
+}
+
+body.light-mode nav a {
+    color: var(--color-text-light) !important;
+}
+
+body.light-mode nav a:hover,
+body.light-mode nav a:focus-visible {
+    color: var(--color-primary-light) !important;
+}
+
+body.light-mode #toggle-theme:hover,
+body.light-mode #toggle-theme:focus-visible {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-mode .dashboard-section h1 {
+    color: var(--color-primary-light) !important;
+}
+
+body.light-mode .dashboard-section p {
+    color: var(--color-text-muted-light) !important;
+}
+
+body.light-mode .dashboard-actions {
+    background-color: var(--color-bg-action-light) !important;
+    box-shadow: 0 2px 10px var(--color-shadow-light) !important;
+}
+
+body.light-mode .action-item p {
+    color: var(--color-text-muted-light) !important;
+}
+
+body.light-mode .action-item img {
+    filter: none !important;
+}
+
+body.light-mode .summary-box {
+    background-color: var(--color-bg-action-light) !important;
+    box-shadow: 0 2px 10px var(--color-shadow-light) !important;
+}
+
+body.light-mode .summary-box h3 {
+    color: var(--color-primary-light) !important;
+}
+
+body.light-mode .summary-box p {
+    color: var(--color-text-muted-light) !important;
+}
+
+body.light-mode small {
+    color: var(--color-text-muted-light) !important;
+}
+
+/* --- Light Mode Footer Styles --- */
+body.light-mode footer {
+    background-color: var(--color-bg-header-light) !important;
+    color: var(--color-text-light) !important;
+    box-shadow: 0 -2px 5px var(--color-shadow-light) !important;
+}
+
+body.light-mode .footer-logo h1 {
+    color: var(--color-primary-light) !important;
+}
+
+body.light-mode footer p {
+    color: var(--color-text-light) !important;
+}
+
+/* --- Light Mode Inicio Page Styles --- */
+body.light-mode .hero-section {
+    background-color: var(--color-bg-light) !important;
+    color: var(--color-text-light) !important;
+}
+
+body.light-mode .hero-text h2 {
+    color: var(--color-primary-light) !important;
+}
+
+body.light-mode .hero-text p {
+    color: var(--color-text-muted-light) !important;
+}
+
+body.light-mode .about-section {
+    background-color: var(--color-bg-action-light) !important;
+    color: var(--color-text-light) !important;
+    box-shadow: 0 2px 10px var(--color-shadow-light) !important;
+}
+
+body.light-mode .about-text h3 {
+    color: var(--color-primary-light) !important;
+}
+
+body.light-mode .about-text h4 {
+    color: var(--color-text-muted-light) !important;
+}
+
+body.light-mode .about-text p {
+    color: var(--color-text-light) !important;
+}
+
+body.light-mode .public-events {
+    background-color: var(--color-bg-light) !important;
+    color: var(--color-text-light) !important;
+}
+
+body.light-mode .public-events h3 {
+    color: var(--color-primary-light) !important;
+}
+
+body.light-mode .public-events li {
+    background-color: var(--color-bg-action-light) !important;
+    box-shadow: 0 2px 5px var(--color-shadow-light) !important;
+    color: var(--color-text-muted-light) !important;
+}
+
+body.light-mode .public-events li strong {
+    color: var(--color-primary-light) !important;
+}
+
+/* --- Light Mode Login Page Styles --- */
+body.light-mode .login-section {
+    background-color: var(--color-bg-light) !important;
+}
+
+body.light-mode .login-box {
+    background-color: var(--color-bg-action-light) !important;
+    box-shadow: 0 4px 15px var(--color-shadow-light) !important;
+}
+
+body.light-mode .login-box h2 {
+    color: var(--color-primary-light) !important;
+}
+
+body.light-mode .form-group label {
+    color: var(--color-text-light) !important;
+}
+
+body.light-mode .form-group input[type="text"],
+body.light-mode .form-group input[type="password"],
+body.light-mode input[type="email"] {
+    border: 1px solid var(--color-text-muted-light) !important;
+    background-color: var(--color-bg-light) !important;
+    color: var(--color-text-light) !important;
+}
+
+body.light-mode .form-group input[type="text"]:focus,
+body.light-mode .form-group input[type="password"]:focus,
+body.light-mode input[type="email"]:focus {
+    border-color: var(--color-primary-light) !important;
+    box-shadow: 0 0 0 2px rgba(13, 71, 161, 0.5) !important;
+}
+
+body.light-mode .login-box a {
+    color: var(--color-primary-light) !important;
+}
+
+body.light-mode .login-box small {
+    color: var(--color-text-muted-light) !important;
+}
+
+/* --- Light Mode Management Section Styles --- */
+body.light-mode .management-section {
+    background-color: var(--color-bg-light) !important;
+    color: var(--color-text-light) !important;
+}
+
+body.light-mode .management-section h1 {
+    color: var(--color-primary-light) !important;
+}
+
+body.light-mode .table-responsive {
+    box-shadow: 0 2px 10px var(--color-shadow-light) !important;
+}
+
+body.light-mode .data-table {
+    border: 1px solid var(--color-text-muted-light) !important; /* Added full border to table */
+}
+
+body.light-mode .data-table th,
+body.light-mode .data-table td {
+    border-bottom: 1px solid var(--color-text-muted-light) !important;
+    color: var(--color-text-light) !important;
+}
+
+body.light-mode .data-table th {
+    background-color: var(--color-bg-header-light) !important;
+    color: var(--color-primary-light) !important;
+    border-bottom: 2px solid var(--color-primary-light) !important; /* More prominent border below header */
+}
+
+body.light-mode .data-table tbody tr {
+    background-color: var(--color-bg-action-light) !important;
+}
+
+body.light-mode .data-table tbody tr:hover {
+    background-color: rgba(var(--color-primary-light-rgb), 0.1) !important;
+}
+
+body.light-mode .data-table tbody tr:nth-child(even) {
+    background-color: var(--color-bg-light) !important;
+}
+
+body.light-mode .action-icon:hover {
+    background-color: rgba(var(--color-text-muted-light-rgb), 0.1) !important;
+    border-color: var(--color-text-muted-light) !important;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (min-width: 769px) {
+    .hero-content {
+        flex-direction: row !important;
+        text-align: left !important;
+    }
+
+    .hero-text {
+        flex: 1 !important;
+    }
+
+    .hero-image-wrapper {
+        flex: 0 0 auto !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column !important;
+        gap: 15px !important;
+        text-align: center !important;
+    }
+
+    .logo {
+        justify-content: center !important;
+    }
+
+    nav {
+        margin-top: 15px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    nav a {
+        margin: 5px 0 !important;
+        margin-left: 0 !important;
+    }
+
+    nav #toggle-theme {
+        margin-left: 0 !important;
+        margin-top: 10px !important;
+    }
+
+    nav form {
+        margin: 5px 0 !important;
+    }
+
+    nav form select {
+        margin-left: 0 !important;
+        margin-top: 5px !important;
+    }
+
+    /* Adjust padding for smaller screens */
+    .container {
+        padding: 15px !important;
+    }
+
+    .dashboard-actions,
+    .section-summaries {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+
+    .action-item,
+    .summary-box {
+        max-width: 90% !important;
+        width: 100% !important;
+    }
+
+    /* Footer adjustments for mobile */
+    .footer-content {
+        padding: 15px !important;
+    }
+
+    .footer-images {
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+    }
+
+    /* Table responsiveness for smaller screens */
+    .table-responsive {
+        margin: 0 -15px !important; /* Adjust to full width of screen */
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 8px 10px !important; /* Smaller padding for mobile tables */
+        font-size: 0.8em !important;
+    }
+}
